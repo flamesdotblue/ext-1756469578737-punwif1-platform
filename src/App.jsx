@@ -1,28 +1,31 @@
-import { useState } from 'react'
+import React, { useState } from 'react';
+import Hero3D from './components/Hero3D';
+import LibraryCard from './components/LibraryCard';
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [game, setGame] = useState({
+    title: 'Aurora Station',
+    dewey: '794.6 AUR',
+    sliders: {
+      theme: 1,
+      randomness: 1,
+      interaction: 1,
+      learning: 1,
+      tempo: 1,
+    },
+  });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
+    <div className="min-h-screen bg-orange-50 text-slate-800">
+      <Hero3D />
+      <main className="relative mx-auto -mt-24 max-w-4xl px-4 pb-24">
+        <div className="mx-auto">
+          <LibraryCard
+            value={game}
+            onChange={setGame}
+          />
         </div>
-      </div>
+      </main>
     </div>
-  )
+  );
 }
-
-export default App
